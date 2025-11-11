@@ -1,11 +1,11 @@
-# Diff Tool 🛠️
+# Db env diff tool 🛠️
 
 A web-based tool to compare database changes (DML) between **DEV** and **PRO** environments during release, with direct execution, logging, and multi-database support.
 
 
 ## 📌 Overview
 
-**Diff Tool** helps teams ensure database changes are synchronized between environments by generating and applying **DML differences**. 
+**Db enc diff Tool** helps teams ensure database changes are synchronized between environments by generating and applying **DML differences**. 
 
 It supports both **PostgreSQL** and **MySQL**, and is designed to run entirely from the browser — no local DB client required.
 
@@ -59,7 +59,7 @@ It supports both **PostgreSQL** and **MySQL**, and is designed to run entirely f
 
 ### 1️⃣ Clone the repo
 ```bash
-git clone https://github.com/m-thirumal/diff-tool.git
+git clone https://github.com/m-thirumal/db-env-diff-tool
 cd diff-tool
 
 npm run dev

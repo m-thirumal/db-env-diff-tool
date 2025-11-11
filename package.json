@@ -1,7 +1,7 @@
 {
-  "name": "diff-tool",
+  "name": "DB-env-diff-tool",
   "version": "0.1.0",
-  "description": "Diff Tool - Compare schema and data across environments",
+  "description": "Database environments diff Tool - Compare schema and data across environments",
   "author": {
     "name": "Thirumal M",
     "email": "racetortoise@gmail.com"
