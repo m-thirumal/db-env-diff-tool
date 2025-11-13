@@ -291,27 +291,46 @@ function DiffView({ definitionA, definitionB }) {
 
 
 /** Small reusable column component */
-function DiffColumn({ title, color, items, onClick, selected }) {
-  return (
-    <div>
-      <h3 className={`text-lg font-semibold text-${color}-700 mb-2`}>{title}</h3>
-      <ul className="border p-2 rounded h-[70vh] overflow-auto divide-y divide-gray-300 bg-white shadow-inner">
-        {items.length ? (
-          items.map((f) => (
-            <li
-              key={f}
-              onClick={onClick ? () => onClick(f) : undefined}
-              className={`py-2 px-2 transition-colors cursor-pointer ${
-                selected === f ? "bg-green-100" : "hover:bg-green-50"
-              }`}
-            >
-              {f}
-            </li>
-          ))
-        ) : (
-          <p className="text-center text-gray-500 mt-4">None</p>
-        )}
-      </ul>
-    </div>
-  );
-}
+  function DiffColumn({ title, color, items, onClick, selected }) {
+    const [search, setSearch] = useState("");
+
+    // Filter items based on search input (case-insensitive)
+    const filteredItems = items.filter((f) =>
+      f.toLowerCase().includes(search.toLowerCase())
+    );
+
+    return (
+      <div>
+        <h3 className={`text-lg font-semibold text-${color}-700 mb-2`}>{title}</h3>
+
+        {/* 🔍 Search box */}
+        <div className="mb-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full px-2 py-1 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+          />
+        </div>
+
+        <ul className="border p-2 rounded h-[65vh] overflow-auto divide-y divide-gray-300 bg-white shadow-inner">
+          {filteredItems.length ? (
+            filteredItems.map((f) => (
+              <li
+                key={f}
+                onClick={onClick ? () => onClick(f) : undefined}
+                className={`py-2 px-2 transition-colors cursor-pointer ${
+                  selected === f ? "bg-green-100" : "hover:bg-green-50"
+                }`}
+              >
+                {f}
+              </li>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 mt-4">No matches</p>
+          )}
+        </ul>
+      </div>
+    );
+  }
